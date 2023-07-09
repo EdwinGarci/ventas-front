@@ -1,0 +1,46 @@
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="flex flex-column align-items-center justify-content-center">
+        <!-- <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="Sakai logo" class="mb-5 w-6rem flex-shrink-0">                 -->
+        <div
+            style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
+            <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
+                <div class="text-center mb-5">
+                    <!-- <img src="assets/demo/images/login/avatar.png" alt="Image" height="50" class="mb-3"> -->
+                    <div class="text-900 text-3xl font-medium mb-3">Bienvenido!</div>
+                    <span class="text-600 font-medium">Inicia sesión para continuar</span>
+                </div>
+
+                <div>
+                    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+                        <div>
+                            <label for="username" class="block text-900 text-xl font-medium mb-2">Usuario</label>
+                            <input id="username" required type="text" placeholder="Email address" pInputText
+                                class="w-full md:w-30rem mb-2" style="padding:1rem" formControlName="username">
+                            <div
+                                *ngIf="authForm.get('username').invalid && (authForm.get('username').dirty || authForm.get('username').touched)">
+                                <small class="p-error">El usuario es obligatorio. </small>
+                            </div>
+                            <label for="password" class="block text-900 font-medium text-xl mb-2">Password</label>
+                            <p-password id="password" required placeholder="Password" [toggleMask]="true"
+                                styleClass="mb-2" inputStyleClass="w-full p-3 md:w-30rem"
+                                formControlName="password" [feedback]="false"></p-password>
+                            <div
+                                *ngIf="authForm.get('password').invalid && (authForm.get('password').dirty || authForm.get('password').touched)">
+                                <small class="p-error">La contraseña es obligatoria. </small>
+                            </div>
+                            <div class="flex align-items-center justify-content-between mb-5 gap-5">
+                                <!-- <div class="flex align-items-center">
+                                        <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                                        <label for="rememberme1">Remember me</label>
+                                    </div>
+                                    <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a> -->
+                            </div>
+                            <button type="submit" pButton pRipple label="Iniciar Sesión" class="w-full p-3 text-xl"
+                                [disabled]="authForm.invalid && error == null"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

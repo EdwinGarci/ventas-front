@@ -1,0 +1,110 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="name" formControlName="name" required autofocus />
+              <label htmlFor="name">Nombre</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('name').invalid && (serviceForm.get('name').dirty || serviceForm.get('name').touched)">El
+              nombre
+              es obligatorio. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('name').errors?.['minlength'] && (serviceForm.get('name').dirty || serviceForm.get('name').touched)">El
+              nombre debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('name').errors?.['pattern'] && (serviceForm.get('name').dirty || serviceForm.get('name').touched)">El
+              nombre contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="description" formControlName="description" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="description">Descripción</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('description').invalid && (serviceForm.get('description').dirty || serviceForm.get('description').touched)">La
+              descripción
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="serviceForm.get('description').errors?.['minlength'] && (serviceForm.get('description').dirty || serviceForm.get('description').touched)">La
+              descripción debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('description').errors?.['pattern'] && (serviceForm.get('description').dirty || serviceForm.get('description').touched)">La
+              descripción contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="service_price" formControlName="service_price" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="service_price">Precio</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('service_price').invalid && (serviceForm.get('service_price').dirty || serviceForm.get('service_price').touched)">El
+              precio
+              es obligatorio. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('service_price').errors?.['max'] && (serviceForm.get('service_price').dirty || serviceForm.get('service_price').touched)">El
+              precio debe tener como máximo 9 caracteres. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('service_price').errors?.['pattern'] && (serviceForm.get('service_price').dirty || serviceForm.get('service_price').touched)">El
+              precio contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="estimated_duration" formControlName="estimated_duration" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="estimated_duration">Duración estimada</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('estimated_duration').invalid && (serviceForm.get('estimated_duration').dirty || serviceForm.get('estimated_duration').touched)">La
+              duración estimada
+              es obligatorio. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('estimated_duration').errors?.['pattern'] && (serviceForm.get('estimated_duration').dirty || serviceForm.get('estimated_duration').touched)">La
+              duración estimada contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="availability" formControlName="availability" required autofocus />
+              <label htmlFor="availability">Disponibilidad</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('availability').invalid && (serviceForm.get('availability').dirty || serviceForm.get('availability').touched)">La disponibilidad
+              es
+              obligatorio.</small>
+              <small class="p-error"
+              *ngIf="serviceForm.get('availability').errors?.['minlength'] && (serviceForm.get('availability').dirty || serviceForm.get('availability').touched)">La
+              disponibilidad debe tener al menos 3 caracteres. </small>
+          </div>
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="category" formControlName="category" required autofocus />
+              <label htmlFor="category">Categoría</label>
+            </span>
+            <small class="p-error"
+              *ngIf="serviceForm.get('category').invalid && (serviceForm.get('category').dirty || serviceForm.get('category').touched)">El
+              categoría es
+              obligatorio. </small>
+            <small class="p-error"
+              *ngIf="serviceForm.get('category').errors?.['minlength'] && (serviceForm.get('category').dirty || serviceForm.get('category').touched)">El
+              categoría debe tener al menos 3 caracteres.</small>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid flex justify-content-between">
+        <button type="button" pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-danger mr-6"
+          (click)="closeDialog()"></button>
+        <button type="submit" pButton pRipple label="Guardar" [disabled]="!serviceForm.valid || updating$"
+          icon="pi pi-check" class="p-button-success"></button>
+      </div>
+    </form>
+  </div>
+</div>

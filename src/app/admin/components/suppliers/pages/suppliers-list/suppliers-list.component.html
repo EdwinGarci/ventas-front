@@ -1,0 +1,69 @@
+<div class="grid">
+  <div class="col-12">
+		<div class="card">
+			<h5>Tabla de Proveedores</h5>
+			<p-table #dt1 [value]="dataSource" dataKey="id" [rows]="10" [loading]="loading$" [rowHover]="true" styleClass="p-datatable-gridlines" 
+			[paginator]="true" [globalFilterFields]="['row.name']" [rowsPerPageOptions]="[10, 20, 30]" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+            <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+						<span class="block mt-2 md:mt-0 p-input-icon-left">
+							<i class="pi pi-search"></i>
+							<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Buscar Palabra Clave" class="w-full sm:w-auto"/>
+						</span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 12rem" *ngFor="let headers of displayedColumns">{{headers}}<!--<p-sortIcon field="headers"></p-sortIcon>-->
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-supplier let-rowIndex="rowIndex">
+					<tr>
+						<td scope="row">{{rowIndex+1}}</td>
+            <td style="width:14%; min-width:10rem;">
+							{{supplier.name}}
+						</td>
+						<td style="width:14%; min-width:10rem;">
+							{{supplier.ruc}}
+						</td>
+						<td style="width:14%; min-width:10rem;">
+							{{supplier.address}}
+						</td>
+						<td style="width:14%; min-width:10rem;">
+							{{supplier.phone}}
+						</td>
+						<td style="width:14%; min-width:10rem;">
+							{{supplier.email}}
+						</td>
+            <td style="width:14%; min-width:10rem;">
+							{{supplier.type_product}}
+						</td>
+						<td>
+							<div class="flex">
+								<button pButton pRipple icon="pi pi-pencil" [disabled]="deleting$" (click)="onEdit(supplier)"
+									class="p-button-rounded p-button-success mr-2"></button>
+								<div class="flex justify-content-center gap-2">
+									<p-toast></p-toast>
+									<button pButton pRipple icon="pi pi-trash" [disabled]="deleting$" (click)="deleteItem($event, supplier)"></button>
+									<p-confirmPopup key="confirm2"></p-confirmPopup>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="8">Sin datos.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="8">Cargando roles. Espere un momento.</td>
+					</tr>
+				</ng-template>
+    	</p-table>
+		</div>
+	</div>
+</div>

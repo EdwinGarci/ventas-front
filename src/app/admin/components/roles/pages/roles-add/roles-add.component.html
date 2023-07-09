@@ -1,0 +1,54 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="name" formControlName="name" required autofocus />
+              <label htmlFor="name">Nombres</label>
+            </span>
+            <small class="p-error"
+              *ngIf="roleForm.get('name').invalid && (roleForm.get('name').dirty || roleForm.get('name').touched)">El
+              nombre
+              es obligatorio. </small>
+            <small class="p-error"
+              *ngIf="roleForm.get('name').errors?.['minlength'] && (roleForm.get('name').dirty || roleForm.get('name').touched)">El
+              nombre debe tener al menos 3 caracteres. </small>
+              <!-- <small class="p-error"
+              *ngIf="roleForm.get('name').errors?.['maxlength'] && (roleForm.get('name').dirty || roleForm.get('name').touched)">El
+              nombre debe tener como máximo 60 caracteres. </small> -->
+            <small class="p-error"
+              *ngIf="roleForm.get('name').errors?.['pattern'] && (roleForm.get('name').dirty || roleForm.get('name').touched)">El
+              nombre contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="description" formControlName="description" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="description">Descripción</label>
+            </span>
+            <small class="p-error"
+              *ngIf="roleForm.get('description').invalid && (roleForm.get('description').dirty || roleForm.get('description').touched)">La
+              descripción
+              es obligatorio. </small>
+            <small class="p-error"
+              *ngIf="roleForm.get('description').errors?.['minlength'] && (roleForm.get('description').dirty || roleForm.get('description').touched)">La
+              descripción debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="roleForm.get('description').errors?.['pattern'] && (roleForm.get('description').dirty || roleForm.get('description').touched)">La
+              descripción contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid flex justify-content-between">
+        <button type="button" pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-danger mr-6"
+          (click)="closeDialog()"></button>
+        <button type="submit" pButton pRipple label="Guardar" [disabled]="!roleForm.valid || creating$"
+          icon="pi pi-check" class="p-button-success"></button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="name" formControlName="name" required autofocus />
+              <label htmlFor="name">Nombres</label>
+            </span>
+            <small class="p-error"
+              *ngIf="clientForm.get('name').invalid && (clientForm.get('name').dirty || clientForm.get('name').touched)">El
+              nombre
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="clientForm.get('name').errors?.['minlength'] && (clientForm.get('name').dirty || clientForm.get('name').touched)">El
+              nombre debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="clientForm.get('name').errors?.['pattern'] && (clientForm.get('name').dirty || clientForm.get('name').touched)">El
+              nombre contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="lastname" formControlName="lastname" required autofocus />
+              <label htmlFor="lastname">Apellidos</label>
+            </span>
+            <small class="p-error"
+              *ngIf="clientForm.get('lastname').invalid && (clientForm.get('lastname').dirty || clientForm.get('lastname').touched)">El
+              apellido es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="clientForm.get('lastname').errors?.['minlength'] && (clientForm.get('lastname').dirty || clientForm.get('lastname').touched)">El
+              apellido debe tener al menos 7 caracteres. </small>
+            <small class="p-error"
+              *ngIf="clientForm.get('lastname').errors?.['pattern'] && (clientForm.get('lastname').dirty || clientForm.get('lastname').touched)">El
+              apellido contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="address" formControlName="address" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="address">Dirección</label>
+            </span>
+            <small class="p-error"
+              *ngIf="clientForm.get('address').invalid && (clientForm.get('address').dirty || clientForm.get('address').touched)">La
+              descripción
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="clientForm.get('address').errors?.['minlength'] && (clientForm.get('address').dirty || clientForm.get('address').touched)">La
+              dirección debe tener al menos 7 caracteres. </small>
+            <small class="p-error"
+              *ngIf="clientForm.get('address').errors?.['pattern'] && (clientForm.get('address').dirty || clientForm.get('address').touched)">La
+              descripción contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="phone" formControlName="phone" required autofocus />
+              <label htmlFor="phone">Teléfono</label>
+            </span>
+            <small class="p-error"
+              *ngIf="clientForm.get('phone').invalid && (clientForm.get('phone').dirty || clientForm.get('phone').touched)">El dni
+              es
+              obligatorio.</small>
+          </div>
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="email" formControlName="email" required autofocus />
+              <label htmlFor="email">Correo</label>
+            </span>
+            <small class="p-error"
+              *ngIf="clientForm.get('email').invalid && (clientForm.get('email').dirty || clientForm.get('email').touched)">El
+              correo es
+              obligatorio. </small>
+            <small class="p-error"
+              *ngIf="clientForm.get('email').errors?.['email'] && (clientForm.get('email').dirty || clientForm.get('email').touched)">El
+              correo debe tener el formato correcto.</small>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid flex justify-content-between">
+        <button type="button" pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-danger mr-6"
+          (click)="closeDialog()"></button>
+        <button type="submit" pButton pRipple label="Guardar" [disabled]="!clientForm.valid || updating$"
+          icon="pi pi-check" class="p-button-success"></button>
+      </div>
+    </form>
+  </div>
+</div>

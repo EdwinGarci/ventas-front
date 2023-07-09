@@ -1,0 +1,113 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="name" formControlName="name" required autofocus />
+              <label htmlFor="name">Nombre</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('name').invalid && (supplierForm.get('name').dirty || supplierForm.get('name').touched)">El
+              nombre
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('name').errors?.['minlength'] && (supplierForm.get('name').dirty || supplierForm.get('name').touched)">El
+              nombre debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="supplierForm.get('name').errors?.['pattern'] && (supplierForm.get('name').dirty || supplierForm.get('name').touched)">El
+              nombre contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="ruc" formControlName="ruc" required autofocus />
+              <label htmlFor="ruc">RUC</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('ruc').invalid && (supplierForm.get('ruc').dirty || supplierForm.get('ruc').touched)">El
+              ruc es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('ruc').errors?.['minlength'] && (supplierForm.get('ruc').dirty || supplierForm.get('ruc').touched)">El
+              ruc debe tener 11 caracteres. </small>
+            <small class="p-error"
+              *ngIf="supplierForm.get('ruc').errors?.['pattern'] && (supplierForm.get('ruc').dirty || supplierForm.get('ruc').touched)">El
+              ruc contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="address" formControlName="address" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="address">Dirección</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('address').invalid && (supplierForm.get('address').dirty || supplierForm.get('address').touched)">La
+              descripción
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('address').errors?.['minlength'] && (supplierForm.get('address').dirty || supplierForm.get('address').touched)">La
+              descripción debe tener al menos 7 caracteres. </small>
+            <small class="p-error"
+              *ngIf="supplierForm.get('address').errors?.['pattern'] && (supplierForm.get('address').dirty || supplierForm.get('address').touched)">La
+              descripción contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-float-label">
+              <textarea id="type_product" formControlName="type_product" rows="6" cols="46" pInputTextarea required autofocus></textarea>
+              <label htmlFor="type_product">Tipo de Producto</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('type_product').invalid && (supplierForm.get('type_product').dirty || supplierForm.get('type_product').touched)">El
+              tipo de producto
+              es obligatorio. </small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('type_product').errors?.['minlength'] && (supplierForm.get('type_product').dirty || supplierForm.get('type_product').touched)">El
+              tipo de producto debe tener al menos 3 caracteres. </small>
+            <small class="p-error"
+              *ngIf="supplierForm.get('type_product').errors?.['pattern'] && (supplierForm.get('type_product').dirty || supplierForm.get('type_product').touched)">El
+              tipo de producto contiene caracteres no permitidos.</small>
+          </div>
+        </div>
+        <div class="p-formgrid grid">
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="phone" formControlName="phone" required autofocus />
+              <label htmlFor="phone">Teléfono</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('phone').invalid && (supplierForm.get('phone').dirty || supplierForm.get('phone').touched)">El dni
+              es
+              obligatorio.</small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('phone').errors?.['pattern'] && (supplierForm.get('phone').dirty || supplierForm.get('phone').touched)">El
+              teléfono contiene caracteres no permitidos.</small>
+          </div>
+          <div class="field col">
+            <span class="p-input-icon-left p-float-label">
+              <i class="pi pi-user"></i>
+              <input pInputText id="email" formControlName="email" required autofocus />
+              <label htmlFor="email">Correo</label>
+            </span>
+            <small class="p-error"
+              *ngIf="supplierForm.get('email').invalid && (supplierForm.get('email').dirty || supplierForm.get('email').touched)">El
+              correo es
+              obligatorio. </small>
+              <small class="p-error"
+              *ngIf="supplierForm.get('email').errors?.['email'] && (supplierForm.get('email').dirty || supplierForm.get('email').touched)">El
+              formato del correo electrónico es inválido.</small>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid flex justify-content-between">
+        <button type="button" pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-danger mr-6"
+          (click)="closeDialog()"></button>
+        <button type="submit" pButton pRipple label="Guardar" [disabled]="!supplierForm.valid || updating$"
+          icon="pi pi-check" class="p-button-success"></button>
+      </div>
+    </form>
+  </div>
+</div>
